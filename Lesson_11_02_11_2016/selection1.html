@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="radio" name="lang" checked value="C"/> C <br>
+    <input type="radio" name="lang" value="Java"/> Java <br>
+    <input type="radio" name="lang" value="PHP"/> PHP <br>
+    <input type="radio" name="lang" value="Fortran"/> Fortran <br>
+    <button id = "get">Push</button>
+    <script>
+        var but = document.querySelectorAll("button")[0];
+        but.onclick = function () {
+            var lang = document.querySelectorAll("[name = 'lang']");
+            for (let i = 0; i< lang.length; i++){
+                if (lang[i].checked){
+                    alert(lang[i].value);
+                    return;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

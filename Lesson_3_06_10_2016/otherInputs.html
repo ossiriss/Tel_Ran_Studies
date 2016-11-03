@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #inp{
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input id="inp1" type="radio" name="name"/>Masha<br>
+    <input id="inp2" type="radio" name="name"/>Dasha<br>
+    <input id="inp3" type="radio" name="name"/>Glasha<br>
+    <button id="val">value</button>
+
+<script>
+    document.getElementById("val").onclick = function () {
+        alert(document.getElementById("inp1").checked+"; "+
+            document.getElementById("inp2").checked+"; "+
+            document.getElementById("inp3").checked);
+    }
+</script>
+</body>
+</html>

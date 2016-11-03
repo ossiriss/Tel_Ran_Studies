@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Person(name, age, married) {
+            Person.foo = "haha";
+
+            this.name = name;
+            this.age = age;
+            this.married = married;
+            this.greet = function () {
+                console.log("Hello");
+            };
+        }
+
+        function Employee(name, age, married, salary) {
+            this.salary = salary;
+            this.__proto__ = new Person(name, age, married);
+        }
+
+        var p1 = new Person("Sasha", 88, true);
+
+        var e1 = new Employee("Petya", 33, false, 4500);
+        var e2 = new Employee("Anna", 18, true, 9500);
+
+        console.log(e1);
+        console.log(e2);
+    </script>
+</body>
+</html>

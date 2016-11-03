@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-size: 50px;
+            color: blue;
+        }
+        #gena{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    hello <span id = "gena">world</span>!
+    <script>
+        document.body.onclick = function () {
+            if (document.body.style.color != "red"){
+                document.body.style.color = "red";
+            }
+            else {
+                document.body.style.color = "blue";
+            }
+        }
+    </script>
+</body>
+</html>

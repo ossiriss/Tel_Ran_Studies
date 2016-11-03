@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #red{
+            width: 300px;
+            height: 300px;
+            background-color: lightgray;
+            border-radius: 200px;
+            border: 2px solid black;
+        }
+        .but{
+            margin: 10px;
+            width: 100px;
+            height: 50px;
+            border: 0px;
+            font-size: 16px;
+            font-family: Arial;
+            border-radius: 10px;
+        }
+        .green{
+            background-color: green;
+            color: white;
+        }.yellow{
+            background-color: yellow;
+            color: brown;
+        }.red{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<button id="butGreen" class="but green">green</button>
+<button id="butYellow" class="but yellow">yellow</button>
+<button id="butRed" class="but red">red</button>
+
+<script>
+    document.getElementById("butGreen").onclick = function () {
+        document.getElementById("red").style.backgroundColor="green";
+    }
+    document.getElementById("butYellow").onclick = function () {
+        document.getElementById("red").style.backgroundColor="yellow";
+    }
+    document.getElementById("butRed").onclick = function () {
+        document.getElementById("red").style.backgroundColor="red";
+    }
+</script>
+</body>
+</html>

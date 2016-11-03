@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic_light</title>
+    <style>
+        #blackbox{
+            background-color: black;
+            height: 600px;
+            width: 200px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .light{
+            background-color: gray;
+            height: 32%;
+            width: auto;
+            border-radius: 50%;
+            margin: 6px;
+            position: relative;
+            top: 6px;
+        }
+        .colorBut{
+            border-radius: 20%;
+            height: 60px;
+            width: 60px;
+        }
+        #redBut{
+            background-color: red;
+        }
+        #yellowBut{
+            background-color: yellow;
+        }
+        #greenBut{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="blackbox">
+        <div id="red" class="light"></div>
+        <div id="yellow" class="light"></div>
+        <div id="green" class="light"></div>
+    </div>
+    <button id="redBut" class="colorBut"></button>
+    <button id="yellowBut" class="colorBut"></button>
+    <button id="greenBut" class="colorBut"></button>
+    <script>
+        var red = document.getElementById("red");
+        var yellow = document.getElementById("yellow");
+        var green = document.getElementById("green");
+
+        document.getElementById("redBut").onclick = function () {
+            red.style.backgroundColor = "red";
+            yellow.style.backgroundColor = "gray";
+            green.style.backgroundColor = "gray";
+        };
+        document.getElementById("yellowBut").onclick = function () {
+            red.style.backgroundColor = "gray";
+            yellow.style.backgroundColor = "yellow";
+            green.style.backgroundColor = "gray";
+        };
+        document.getElementById("greenBut").onclick = function () {
+            red.style.backgroundColor = "gray";
+            yellow.style.backgroundColor = "gray";
+            green.style.backgroundColor = "green";
+        };
+    </script>
+</body>
+</html>

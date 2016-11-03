@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        input{
+            margin-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+    <input id="firstName" type="text" placeholder="First Name"/><br>
+    <input id="lastName" type="text" placeholder="Last Name"/><br>
+    gender:
+    <input id="male" type="radio" name="gender"/>male
+    <input id="female" type="radio" name="gender"/>female
+    <input id="advanced" type="radio" name="gender"/>advanced<br>
+    <input id="married" type="checkbox"/>married<br>
+    favorite color:
+    <input id="color" type="color"/><br>
+    <button id="show">show</button>
+    <button id="clear">clear</button>
+
+    <script>
+        var fname = document.getElementById("firstName");
+        var lname = document.getElementById("lastName");
+        var male = document.getElementById("male");
+        var female = document.getElementById("female");
+        var advanced = document.getElementById("advanced");
+        var married = document.getElementById("married");
+        var color = document.getElementById("color");
+
+        document.getElementById("clear").onclick = function () {
+            fname.value = "";
+            lname.value = "";
+            male.checked = false;
+            female.checked = false;
+            advanced.checked = false;
+            married.checked = false;
+            color.value = "#000000";
+        };
+
+        document.getElementById("show").onclick = function () {
+            var gender = "";
+            if (male.checked == true) gender = "male";
+            else if (female.checked == true) gender = "female";
+            else if (advanced.checked == true) gender = "advanced";
+
+            alert(
+                    "First Name: " + fname.value + "\n" +
+                    "Last Name: " + lname.value + "\n" +
+                    "Gender: " + gender + "\n" +
+                    "Married: " + married.checked + "\n" +
+                    "color : " + color.value
+            )
+        };
+    </script>
+</body>
+</html>

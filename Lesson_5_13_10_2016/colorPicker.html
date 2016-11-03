@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #square{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input id="red" type="range" min="0" max="255" value="0"/><br>
+        <input id="green" type="range" min="0" max="255" value="0"/><br>
+        <input id="blue" type="range" min="0" max="255" value="0"/><br>
+        <span id="color">#000000</span>
+        <div id="square"></div>
+    </div>
+    <script>
+        var red = document.getElementById("red");
+        var green = document.getElementById("green");
+        var blue = document.getElementById("blue");
+        var color = document.getElementById("color");
+
+        function makeRGB(r,g,b){
+            return toHex(r)+ toHex(g)+ toHex(b);
+        }
+
+        var hex = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+        function toHex(num){
+            var res= hex[num%16];
+            num=Math.floor(num/16);
+            return hex[num%16]+res;
+        }
+
+        document.getElementById("square").style.backgroundColor = "#000000";
+
+        red.onmousemove = handler;
+        green.onmousemove = handler;
+        blue.onmousemove = handler;
+
+        function handler() {
+            var clr = "#" + makeRGB(red.value, green.value, blue.value).toString(16);
+            color.innerText = clr;
+            document.getElementById("square").style.backgroundColor = clr;
+        }
+
+    </script>
+</body>
+</html>

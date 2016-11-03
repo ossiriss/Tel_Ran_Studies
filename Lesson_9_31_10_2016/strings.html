@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function myParseInt(s) {
+            if (s.length == 0) return 0;
+
+            var str = s;
+            var c = str.charAt(0);
+            var sign = 1;
+            if (c == '-'){
+                str = str.substr(1);
+                sign = -1;
+            }
+
+            var res = 0;
+            for(var i = 0; i < str.length; i++){
+                res = res * 10 + (str.charAt(i) - '0');
+            }
+
+            return res*sign;
+        }
+
+        function reverseString(str) {
+            var res = "";
+
+            for (var i = 0; i < str.length; i++){
+                res = str.charAt(i) + res;
+            }
+            return res;
+        }
+
+        console.log(myParseInt("-12345"));
+        console.log(reverseString("hello world"));
+    </script>
+</body>
+</html>

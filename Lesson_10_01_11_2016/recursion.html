@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function fac(num) {
+            if(num == 1) return 1;
+            return fac(num-1)*num;
+        }
+
+        var myFac = function f(num) {
+            if(num == 1) return 1;
+            return f(num-1)*num;
+        };
+
+        var anotherFac = myFac;
+        myFac = undefined;
+
+        console.log(anotherFac(8));
+
+
+    </script>
+</body>
+</html>

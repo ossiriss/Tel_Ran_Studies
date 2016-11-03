@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            font-size: 0;
+            position: absolute;
+            top: 300px;
+            left: 300px;
+        }
+        .sq1{
+            width: 50px;
+            height: 174px;
+            display: inline-block;
+        }
+        .white{
+            background-color: white;
+        }
+        .sq2{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .green{
+            background-color: green;
+        }
+        .first{
+            transform: rotate(30deg);
+            transform-origin: right bottom;
+        }
+        .second{
+            transform: rotate(-30deg);
+            transform-origin: left bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="sq1 white first"></div>
+        <div class="sq2 green"></div>
+        <div class="sq1 white second"></div>
+    </div>
+</body>
+</html>

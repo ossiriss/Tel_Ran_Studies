@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Car(model, color, engine, owner) {
+            this.model = model;
+            this.color = color;
+            this.engine = engine;
+            this.owner = owner;
+        }
+
+        function Owner(name, city) {
+            this.name = name;
+            this.city = city;
+            this.toString = function () {
+                return "Go to hell!!!";
+            }
+        }
+        
+        function randomCar() {
+            var N_MODEL = 5;
+            var MAX_ENG = 1.8;
+            var MIN_ENG = 0.7;
+
+
+            var model = "model #" + nextInt(N_MODEL);
+            var color = "#"+nextInt(0xffffff).toString(16);
+            var engine = nextDouble(MIN_ENG, MAX_ENG);
+
+            return new Car(model, color, engine, randomOwner());
+        }
+
+        function randomOwner() {
+            var N_NAMES = 10;
+            var N_CITIES = 3;
+
+            var name = "name #" + nextInt(N_NAMES);
+            var city = "city #" + nextInt(N_CITIES);
+
+            return new Owner(name, city);
+        }
+
+        function nextInt(n) {
+            return Math.floor(Math.random()*n);
+        }
+        function nextDouble(min, max) {
+            return (min + Math.random() * (max-min)).toFixed(2);
+        }
+
+        var carArray = [];
+        for (var i = 0; i < 10; i++){
+            carArray[i] = randomCar();
+        }
+
+        var backEndResponse = JSON.stringify(carArray);
+
+        console.log(backEndResponse);
+
+        //------------------------------------------------------------------
+
+        var res = JSON.parse(backEndResponse);
+        console.log(res);
+
+        var tbl = document.createElement("table");
+
+        // header
+        var row = tbl.insertRow();
+        row.insertCell().innerText = "Model";
+        row.insertCell().innerText = "Color";
+        row.insertCell().innerText = "Engine";
+        row.insertCell().innerText = "Owner's name";
+        row.insertCell().innerText = "Owner's city";
+
+        //tbody
+
+        for (i = 0; i < res.length; i++){
+            row = tbl.insertRow();
+            row.insertCell().innerText = res[i].model;
+            row.insertCell().style.backgroundColor = res[i].color;
+            row.insertCell().innerText = res[i].engine;
+            row.insertCell().innerText = res[i].owner.name;
+            row.insertCell().innerText = res[i].owner.city;
+        }
+
+        document.body.appendChild(tbl);
+
+
+
+
+    </script>
+</body>
+</html>

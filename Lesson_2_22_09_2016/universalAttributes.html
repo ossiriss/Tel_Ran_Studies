@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .black{
+            background-color: black;
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            width: 200px;
+            height: 200px;
+            transition: 500ms;
+        }
+    </style>
+</head>
+<body>
+    <div id="square" class="black" title="Malevich smokes at side"></div>
+    <a href="spanPlay.html" target="_self" title="Don't touch">Push here!</a>
+    <script>
+        /*function red() {
+            document.getElementById("square").style.backgroundColor = "yellow";
+        }
+        function black() {
+            document.getElementById("square").style.backgroundColor = "black";
+        }*/
+        var malevich = document.getElementById("square");
+        malevich.onmouseover = function () {
+            this.style.backgroundColor = "yellow";
+        }
+        malevich.onmouseout = function () {
+            this.style.backgroundColor = "black";
+        }
+    </script>
+</body>
+</html>

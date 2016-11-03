@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var arr = [3, 8, -500, 1, -4, 5, 18, 99, 333, -99, -1, -55];
+        var comp = function (a,b) {
+            if (a*b < 0){
+                return a<0 ? -1:1;
+            }
+            return a<0 ? b-a : a-b;
+        };
+        var fltr = function (num) {
+            return num%2==0;
+        };
+        console.log(arr.filter(fltr));
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var sasha = test();
+        console.log(sasha.hipo(3, 4));
+        console.log(sasha.sq());
+
+        function test() {
+            function sq(x) {
+                return x*x;
+            }
+
+            function cube(x) {
+                return x*x*x;
+            }
+
+            return {
+                hipo : function (x, y) {
+                return sq(x) + cube(y);
+                },
+                sq:function () {
+                    return 111;
+                }
+            };
+
+        }
+    </script>
+</body>
+</html>

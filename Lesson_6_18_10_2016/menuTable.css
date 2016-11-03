@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Sasha;
+    src: url(SCRIPTIN.ttf);
+}
+.tbl{
+    border-collapse: collapse;
+    font-family: Sasha;
+    font-size: 6vh;
+    width: 100%;
+    border-spacing: 0;
+}
+.container{
+    width: 50vw;
+    height: 50vh;
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    overflow: auto;
+}
+.tbl tr{
+    height: 10vh;
+}
+.tbl td{
+    padding: 2vh;
+    text-align: left;
+}
+.tbl td:nth-child(1), .h td:nth-child(1){
+    width: 18vw;
+}
+.tbl td:nth-child(2), .h td:nth-child(2){
+    width: 18vw;
+}
+.tbl tr:nth-child(even){
+    background-color: lemonchiffon;
+}
+.header{
+    position: absolute;
+    left:25vw;
+    bottom: 75vh;
+    width: 50vw;
+    border-bottom: 1px solid brown;
+}
+.h tr{
+    height: 10vh;
+}
+.h td{
+    padding: 2vh;
+    text-align: left;
+}
+.h{
+    border-collapse: collapse;
+    font-family: Sasha;
+    font-size: 6vh;
+    width: 100%;
+}
+.footer{
+    position: absolute;
+    top: 75vh;
+    left: 25vw;
+    border-top: 1px solid brown;
+}
+.f{
+    width: 50vw;
+}
+.f td{
+    font-family: Sasha;
+    font-size: 5vh;
+    text-align: right;
+    padding-right: 4vw;
+}

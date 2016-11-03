@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="threeSquares.css">
+</head>
+<body>
+    <div class="sq red"></div>
+    <div id="y" class="sq yellow"></div>
+    <div class="sq green"></div>
+    <button id="but">push</button>
+    <script>
+        var show = false;
+        var yStyle = document.getElementById("y").style;
+        document.getElementById("but").onclick = function () {
+            show = !show;
+            if (show) yStyle.display = "none";
+            else yStyle.display = "block";
+        }
+    </script>
+</body>
+</html>

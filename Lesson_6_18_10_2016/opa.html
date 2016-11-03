@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .red{
+            background-color: #ffaaaa;
+            color: red;
+        }
+        .green{
+            background-color: #aaffaa;
+            color: darkgreen;
+        }
+        .blue{
+            background-color: #aaaaff;
+            color: darkblue;
+        }
+        .mbut{
+            display: inline-block;
+            height: 3vh;
+            font-size: 3vh;
+            padding: 1.5vh;
+            border-top-left-radius: 1vh;
+            border-top-right-radius: 1vh;
+        }
+        .mbar{
+            font-size: 0;
+            font-family: Arial;
+        }
+        .cont{
+            position: absolute;
+            text-align: center;
+            height: 94vh;
+            width: 100vw;
+            font-size: 30vh;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="mbar" class="mbar">
+        <div class="mbut red" value="red">Red</div>
+        <div class="mbut green" value="green">Green</div>
+        <div class="mbut blue" value="blue">Blue</div>
+    </div>
+    <div class="content">
+        <div id="red" class="cont red">red</div>
+        <div id="green" class="cont green">green</div>
+        <div id="blue" class="cont blue">Blue</div>
+    </div>
+    <script>
+        var mbar = document.getElementById("mbar");
+        var buttons = mbar.children;
+        for (var i = 0; i<buttons.length; i++){
+            buttons[i].onclick = function () {
+                clear();
+                getDiv(this).style.zIndex=100;
+            }
+        }
+
+        function getDiv(but) {
+            return document.getElementById(but.getAttribute("value"));
+        }
+
+        function clear() {
+            for (var i = 0; i<buttons.length; i++){
+                getDiv(buttons[i]).style.zIndex = 1;
+            }
+        }
+    </script>
+</body>
+</html>

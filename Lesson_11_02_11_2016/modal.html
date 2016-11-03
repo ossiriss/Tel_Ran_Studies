@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #sq{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+        .shield{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: rgba(127, 127, 127, 0.2);
+            top: 0;
+            left: 0;
+        }
+        .mdl{
+            position: absolute;
+            width: 30%;
+            height: 20%;
+            background-color: yellow;
+            border: 1px solid red;
+            border-radius: 10px;
+            top: 20%;
+            left: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="sq"></div>
+    <button id = "clr">Push</button><br>
+    <button id = "modal">Modal</button>
+    <script>
+        var sq = document.getElementById("sq");
+        document.getElementById("clr").onclick = function () {
+            if (sq.style.backgroundColor != "red") sq.style.backgroundColor = "red";
+            else sq.style.backgroundColor = "green";
+        };
+
+        document.getElementById("modal").onclick = function (msg) {
+            var s = setShield();
+            var mod = document.createElement("div");
+            mod.className = "mdl";
+            s.appendChild(mod);
+        };
+
+        function setShield() {
+            var shield = document.createElement("div");
+            shield.className = "shield";
+            document.body.appendChild(shield);
+
+            return shield;
+        }
+    </script>
+</body>
+</html>

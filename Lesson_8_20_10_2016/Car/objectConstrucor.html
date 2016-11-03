@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="carTable.css">
+    <script src="Car.js"></script>
+    <script src="Owner.js"></script>
+    <script src="RandomUtil.js"></script>
+    <script src="ArrayUtil.js"></script>
+</head>
+<body>
+<script>
+    var carArray = [];
+    for (var  i=0; i<10; i++)carArray[i]=Car.random();
+
+    var backEndResponse = JSON.stringify(carArray);
+
+    //-------------------------------------------------------------------------------------
+
+    var res = JSON.parse(backEndResponse);
+
+    ArrayUtil.barmanSort(res,Car.comaparator("model"));
+    console.log(res);
+
+    var tbl = document.createElement("table");
+    tbl.className = "cartable";
+
+    // header
+    var row = tbl.insertRow();
+    var hModel = row.insertCell().appendChild(document.createElement("span"));
+        hModel.innerText = "Model";
+        hModel.onclick = function () {
+            ArrayUtil.barmanSort(res, Car.modelComparator);
+            updateData();
+        };
+    var hColor = row.insertCell().appendChild(document.createElement("span"));
+        hColor.innerText = "Color";
+        hColor.onclick = function () {
+            ArrayUtil.barmanSort(res, Car.colorComparator);
+            updateData();
+        };
+    var hEngine = row.insertCell().appendChild(document.createElement("span"));
+        hEngine.innerText = "Engine";
+        hEngine.onclick = function () {
+            ArrayUtil.barmanSort(res, Car.engineComparator);
+            updateData();
+        };
+    var hName = row.insertCell().appendChild(document.createElement("span"));
+        hName.innerText = "Owner's name";
+        hName.onclick = function () {
+            ArrayUtil.barmanSort(res, Car.ownerNameComparator);
+            updateData();
+        };
+    var hCity = row.insertCell().appendChild(document.createElement("span"));
+        hCity.innerText = "Owner's city";
+        hCity.onclick = function () {
+            ArrayUtil.barmanSort(res, Car.ownerCityComparator);
+            updateData();
+        };
+
+    // input
+    row = tbl.insertRow();
+    var inputModel = row.insertCell().appendChild(document.createElement("input"));
+    var inputColor = row.insertCell().appendChild(document.createElement("input"));
+        inputColor.type = "color";
+    var inputEngine = row.insertCell().appendChild(document.createElement("input"));
+        inputEngine.type = "number"; inputEngine.min = "0.7"; inputEngine.max = "1.8"; inputEngine.step = 0.01;
+    var inputOwnerName = row.insertCell().appendChild(document.createElement("input"));
+    var inputOwnerCity = row.insertCell().appendChild(document.createElement("input"));
+    var submit = row.insertCell().appendChild(document.createElement("button"));
+        submit.innerText = "add row";
+
+    document.body.appendChild(tbl);
+    updateData();
+
+    submit.onclick = function () {
+        var c = new Car(inputModel.value, inputColor.value, inputEngine.value, new Owner(inputOwnerName.value, inputOwnerCity.value));
+        if (c.model == "" || c.engine == "" || c.owner.name == "" || c.owner.city == ""){
+            alert("fill all data first");
+            return;
+        }
+        if (c.engine < Car.MIN_ENG || c.engine > Car.MAX_ENG){
+            alert("engine volume must be between 0.7 and 1.8");
+            return;
+        }
+        res.unshift(c);
+        inputModel.value = ""; inputColor.value = "#000000"; inputEngine.value = ""; inputOwnerName.value = ""; inputOwnerCity.value = "";
+
+        updateData();
+    };
+
+
+
+    function updateData() {
+        var rows = document.getElementsByClassName("tableData");
+
+        var len = rows.length;
+        for(i = 0; i < len; i++){
+            rows[0].remove();
+        }
+
+        for (i=0; i<res.length; i++){
+            row = tbl.insertRow();
+            row.className = "tableData";
+            row.id = i;
+            row.insertCell().innerText = res[i].model;
+            row.insertCell().style.backgroundColor = res[i].color;
+            row.insertCell().innerText = res[i].engine;
+            row.insertCell().innerText = res[i].owner.name;
+            row.insertCell().innerText = res[i].owner.city;
+
+            row.onclick = function () {
+                res.splice(this.id, 1);
+                this.remove();
+                updateData();
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

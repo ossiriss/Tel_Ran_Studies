@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var sasha = counter();
+        sasha.inc();
+        sasha.show();
+
+        var sasha1 = counter();
+        sasha1.inc();
+        sasha1.show();
+
+
+
+        function counter() {
+            var counter = 0;
+
+            var obj = {};
+            obj.inc = function () {
+                counter++;
+            };
+            obj.show = function () {
+                console.log(counter);
+            };
+
+            return obj;
+        }
+    </script>
+</body>
+</html>

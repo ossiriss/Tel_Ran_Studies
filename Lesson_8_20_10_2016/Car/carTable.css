@@ -1,0 +1,23 @@
+.cartable{
+    position: absolute;
+    border-collapse: collapse;
+    width: 60vw;
+    left: 20vw;
+    height: auto;
+    top: 20vh;
+    font-family: Arial;
+}
+.cartable td{
+    text-align: center;
+    padding: 1vh;
+}
+.cartable tr:nth-child(1){
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.cartable span{
+    cursor: pointer;
+}
+.cartable tr:nth-child(n+3){
+    cursor: pointer;
+}

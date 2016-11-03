@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #first{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">Text</div>
+    <script>
+        var d = document.getElementById("first");
+        console.log(d.tagName);
+        var gcs = getComputedStyle(d);
+        console.log(gcs.width);
+    </script>
+</body>
+</html>

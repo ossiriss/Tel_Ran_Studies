@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container{
+            position: absolute;
+            top: 300px;
+            left: 400px;
+        }
+        .inp{
+            margin: 10px;
+            padding: 10px;
+            font-size: 22px;
+            font-family: Arial;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <input id="login" class="inp" type="text" placeholder="login"/><br>
+    <input id="password" class="inp" type="password" placeholder="password"/><br>
+    <button id="go">Go!</button>
+    <button id="clear">Clear</button><br>
+    <span id="span"></span>
+</div>
+
+<script>
+    var span = document.getElementById("span");
+    var login = document.getElementById("login");
+    var psw = document.getElementById("password");
+
+    document.getElementById("go").onclick = function () {
+        span.innerText = "Hey, "+login.value+", your password is "+psw.value;
+    }
+    document.getElementById("clear").onclick = function () {
+        login.value = "";
+        psw.value = "";
+        span.innerText = "";
+    }
+
+</script>
+
+</body>
+</html>

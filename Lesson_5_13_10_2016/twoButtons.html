@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #second{
+            font-family: Arial;
+            font-size: 100px;
+            padding: 50px;
+            border-radius: 50px;
+            color: darkgreen;
+            background: linear-gradient(to right, #66cc66,#99ff99, #339933);
+            border: hidden;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="first">show</button>
+    <button id="second">close</button>
+    <script>
+        var but = document.getElementById("second");
+        document.getElementById("first").onclick = function () {
+            but.style.display = "inline";
+        }
+
+        but.onclick = function () {
+            but.style.display = "none";
+        }
+    </script>
+</body>
+</html>
