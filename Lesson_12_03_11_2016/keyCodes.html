@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span id="sp">AAAA</span>
+    <script>
+        var sp = document.getElementById("sp")
+        document.onkeydown = function (e) {
+            sp.innerText = e.keyCode;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            font-size: 0;
+        }
+        .but{
+            display: inline-block;
+            width: 25%;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .r{
+            background-color: #ffcccc;
+        }
+        .g{
+            background-color: #ccffcc;
+        }
+        .b{
+            background-color: #ccccff;
+        }
+        .y{
+            background-color: #ffffcc;
+        }
+        .nbar{
+            position: fixed;
+            width: 100vw;
+            z-index: 100;
+        }
+        .innerCont{
+            position: absolute;
+        }
+        .container{
+            position: absolute;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="nb" class="nbar">
+        <div id="red" class="but r">Red</div>
+        <div id="green" class="but g">Green</div>
+        <div id="blue" class="but b">Blue</div>
+        <div id="yellow" class="but y">Yellow</div>
+    </div>
+    <div id = "container" class="container">
+        <div class="innerCont r"></div>
+        <div class="innerCont g"></div>
+        <div class="innerCont b"></div>
+        <div class="innerCont y"></div>
+    </div>
+    <script>
+        var divCont = document.getElementById("container");
+        var nbh = document.getElementById("nb").offsetHeight;
+        var winh = window.innerHeight;
+        var childrenOfContainer = divCont.children;
+        for (var i = 0; i<childrenOfContainer.length; i++){
+            childrenOfContainer[i].style.width = window.innerWidth + "px";
+            childrenOfContainer[i].style.height = (winh-nbh) + "px";
+        }
+        divCont.style.top = nbh + "px";
+        var w = childrenOfContainer[0].style.width;
+        var h = childrenOfContainer[0].style.height;
+
+        divCont.style.width = w;
+        divCont.style.height = h;
+
+        childrenOfContainer[0].style.top = 0;
+        childrenOfContainer[1].style.top = 0;
+        childrenOfContainer[2].style.top = h;
+        childrenOfContainer[3].style.top = h;
+        childrenOfContainer[1].style.left = w;
+        childrenOfContainer[3].style.left = w;
+
+        document.getElementById("red").onclick = function () {
+            move(0,0)
+        };
+        document.getElementById("green").onclick = function () {
+            move(cutPX(w),0)
+        };
+        document.getElementById("blue").onclick = function () {
+            move(0,cutPX(h))
+        };
+        document.getElementById("yellow").onclick = function () {
+            move(cutPX(w),cutPX(h))
+        };
+
+        function move(x, y) {
+            divCont.scrollLeft = x;
+            divCont.scrollTop = y;
+        }
+        function cutPX(str) {
+            return str.replace("px", "");
+        }
+    </script>
+</body>
+</html>

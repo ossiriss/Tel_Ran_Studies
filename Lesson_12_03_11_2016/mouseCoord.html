@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #sp{
+            font-family: Arial;
+            font-size: 30px;
+        }
+        body{
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <span id="sp">aaa</span>
+    <script>
+        var sp = document.getElementById("sp");
+        document.body.addEventListener("click", function (e) {
+            sp.innerText = e.clientX + "; " + e.clientY;
+        }, false)
+    </script>
+</body>
+</html>
