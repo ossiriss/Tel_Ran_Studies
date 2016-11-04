@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .circle{
+            position: absolute;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var MAX_CIRCLES = 10;
+        var colors = ["red", "green", "blue", "yellow"];
+        for (let i = 0; i < MAX_CIRCLES; i++){
+            var circle = document.createElement("div");
+            document.body.appendChild(circle);
+            circle.className = "circle";
+            circle.style.backgroundColor = colors[Math.floor(Math.random() * 4)];
+            circle.style.top = Math.floor(Math.random() * (window.innerHeight-circle.offsetHeight)) + "px";
+            circle.style.left = Math.floor(Math.random() * (window.innerWidth-circle.offsetWidth)) + "px";
+            circle.onclick = function () {
+                var circles = document.getElementsByClassName("circle");
+                for (let j = 0; j < circles.length; j++){
+                    if (circles[j].style.backgroundColor == this.style.backgroundColor){
+                        circles[j].style.display = "none";
+                    }
+                }
+                this.display = "none";
+            }
+        }
+
+        console.log(window.innerHeight);
+    </script>
+</body>
+</html>
