@@ -12,21 +12,51 @@
 </head>
 <body>
 <script>
-    var MAX_CIRCLES = 25;
+    var MAX_CIRCLES = 14;
     var circles = [];
 
     for (let i = 0; i < MAX_CIRCLES; i++){
         var newCircle = new Circle();
         circles.push(newCircle);
-        document.body.appendChild(newCircle.circle);
+        document.body.appendChild(newCircle.div);
+    }
+
+    window.setInterval(move, 8);
+
+    function move() {
+        for(let i = 0; i < circles.length; i++){
+            let circle = circles[i];
+
+            if(circle.center.getX() + circle.dx + circle.radius > window.innerWidth || circle.center.getX() - circle.radius + circle.dx <0){
+                circle.dx = -circle.dx;
+            }
+            if(circle.center.getY() + circle.radius + circle.dy > window.innerHeight || circle.center.getY() - circle.radius + circle.dy <0){
+                circle.dy = -circle.dy;
+            }
+            for (let j = 0; j < circles.length; j++){
+                if (circle.isCollision(circles[j]) && circle != circles[j]){
+                    circle.dx = -circle.dx;
+                    circle.dy = -circle.dy;
+                }
+            }
+
+            circle.center.setX(circle.center.getX()+circle.dx);
+            circle.center.setY(circle.center.getY()+circle.dy);
+
+            circle.div.style.top = circle.center.getY()-circle.radius + "px";
+            circle.div.style.left = circle.center.getX()-circle.radius + "px";
+        }
     }
 
 
     function Circle() {
 
         var MAX_RADIUS = 65;
-        var MIN_RADIUS = 35;
+        var MIN_RADIUS = 30;
         var colors = ["red", "green", "blue", "yellow", "purple"];
+
+        var dx = Math.random() < 0.5 ? -1 : 1;
+        var dy = Math.random() < 0.5 ? -1 : 1;
 
         var div = document.createElement("div");
         div.className = "circle";
@@ -43,6 +73,16 @@
             }
         }
 
+        div.onclick = function () {
+            for (let j = 0; j < circles.length; j++){
+                if (circles[j].div.style.backgroundColor == div.style.backgroundColor){
+                    circles[j].div.style.display = "none";
+                    circles.splice(j--,1);
+                }
+            }
+            this.display = "none";
+        };
+
         div.style.top = center.getY()-radius + "px";
         div.style.left = center.getX()-radius + "px";
 
@@ -54,9 +94,14 @@
         }
 
         return{
-            circle : div,
+            div : div,
             center : center,
-            radius : radius
+            radius : radius,
+            dx : dx,
+            dy : dy,
+            isCollision : function (circle) {
+                return isCollision(circle);
+            }
         }
     }
 
@@ -70,8 +115,17 @@
             },
             getY: function () {
                 return yy;
+            },
+            setX: function (x) {
+                xx = x;
+            },
+            setY: function (y) {
+                yy = y;
             }
         }
+    }
+    function cutPX(str) {
+        return str.replace("px", "");
     }
 </script>
 </body>
