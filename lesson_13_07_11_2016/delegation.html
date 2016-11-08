@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tbl{
+            border-collapse: collapse;
+        }
+        #tbl td{
+            width: 200px;
+            height: 100px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <table id="tbl">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <script>
+        document.getElementById("tbl").onclick = function (e) {
+            var cell = e.target;
+            console.log(cell);
+            if (cell.style.backgroundColor != "red"){
+                cell.style.backgroundColor = "red";
+            }
+            else {
+                cell.style.backgroundColor = "white";
+            }
+        }
+    </script>
+</body>
+</html>

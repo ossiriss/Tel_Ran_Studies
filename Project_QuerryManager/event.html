@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="event.js"></script>
+</head>
+<body>
+    <script>
+        var event = {
+            id : 12345,
+            name : "party",
+            date: "2016-11-20",
+            deadline : "2016-11-15",
+            price : 300,
+            capacity : 50,
+            admin : "Vasia"
+        };
+
+        var str = JSON.stringify(event);
+        var e = Event(str);
+        e.setName("myName");
+        console.log(e.getId() + " " +e.getName());
+    </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
             background-color: green;
         }
         .shield{
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             z-index: 1000;
@@ -28,33 +28,67 @@
             top: 20%;
             left: 20%;
         }
+        .close{
+            position: absolute;
+            height: 1em;
+            width: 1em;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 1em;
+            text-align: center;
+            font-size: 30px;
+        }
     </style>
+    <script src="shield.js"></script>
 </head>
 <body>
     <div id="sq"></div>
+    <input id="inp" type="text"><br>
     <button id = "clr">Push</button><br>
     <button id = "modal">Modal</button>
     <script>
         var sq = document.getElementById("sq");
+        var msg;
+
         document.getElementById("clr").onclick = function () {
             if (sq.style.backgroundColor != "red") sq.style.backgroundColor = "red";
             else sq.style.backgroundColor = "green";
         };
 
         document.getElementById("modal").onclick = function (msg) {
-            var s = setShield();
+            var sh = Shield();
+            var action = sh.removeShield;
+            var s = sh.setShield();
+            msg = document.getElementById("inp").value;
             var mod = document.createElement("div");
             mod.className = "mdl";
+            mod.innerText = msg;
+            mod.appendChild(makeClose(action));
             s.appendChild(mod);
         };
 
-        function setShield() {
+        /*function setShield() {
             var shield = document.createElement("div");
             shield.className = "shield";
             document.body.appendChild(shield);
 
             return shield;
+        }*/
+
+        function makeClose(action) {
+            var res = document.createElement("div");
+            res.innerHTML = "&times;";
+            res.className = "close";
+            res.onclick = action;
+            return res;
         }
+        
+        /*function removeShield() {
+            var shield = document.querySelector(".shield");
+            shield.remove();
+        }*/
     </script>
 </body>
 </html>
